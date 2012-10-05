@@ -264,7 +264,7 @@ module Dalli
       key = validate_key(key)
       begin
         server = ring.server_for_key(key)
-        Dalli.logger.info("DALLI performing: #{op}: #{key}")
+        Dalli.logger.info("DALLI performing: #{op}: #{key}: args= #{args.join(', ')}")
         server.request(op, key, *args)
       rescue NetworkError => e
         Dalli.logger.debug { e.message }
